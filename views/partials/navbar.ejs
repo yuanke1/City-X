@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg" style="background-color: #4A7169; font-weight: 600;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">City-X</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link" href="/">Home</a>
+          <a class="nav-link" href="/spots">Spots</a>
+          <a class="nav-link" href="/spots/new">New Spot</a>
+          <a class="nav-link" href="/about">About</a>
+        </div>
+        <div class="navbar-nav ms-auto">
+          <% if (!currentUser) { %>
+          <a class="nav-link" href="/login">Login</a>
+          <a class="nav-link" href="/register">Register</a>
+          <% } else { %>
+          <a class="nav-link" href="/logout">Logout</a>
+          <% } %>
+        </div>
+      </div>
+
+      <form class="d-flex" role="search" action="/spots/search" method="post">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searchWord">
+        <button class="btn btn-outline-light" type="submit">Search</button>
+      </form>
+
+    </div>
+  </nav>

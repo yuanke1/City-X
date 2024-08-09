@@ -1,0 +1,37 @@
+<% layout('layouts/boilerplate') %>
+
+    <div id="map" style="width: 100%; height: 500px" class="mb-3"></div>
+
+    <!-- <h1>All Spots</h1> -->
+ 
+    <% for (let spot of spots) { %>
+        <div class="card border-secondary mb-3">
+            <div class="row">
+                <div class="col-md-4">
+                    <% if (spot.images.length) { %>
+                        <img crossorigin="anonymous" class="img-fluid" alt="" src="<%= spot.images[0].url %>">
+                    <% } else { %>
+                        <img crossorigin="anonymous" class="img-fluid" alt="" src="">
+                    <% } %>
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= spot.title %></h5>
+                        <p class="card-text"><%= spot.description %></p>
+                        <p class="card-text">
+                            <small class="text-muted"><%= spot.location %></small>
+                        </p>
+                        <a href="/spots/<%= spot._id %>" class="btn btn-primary">View <%= spot.title %></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% } %>
+  
+
+
+<script>
+    const maptilerApiKey = '<%- process.env.MAPTILER_API_KEY %>';
+    const spots = { features: <%- JSON.stringify(spots) %> }
+</script>
+<script src="clusterMap.js"></script>
